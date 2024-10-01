@@ -4,9 +4,25 @@ This is a practice of applying OOP concepts in C via Michael Safyan's article:
 https://www.codementor.io/@michaelsafyan/object-oriented-programming-in-c-du1081gw2
 
 The original article is structured well and a great launch point into OOP in classic C. However, in implementing I discovered that there were errors, omitted details and reorganization that helped my understanding. This is my documentation of my process in understanding Michael's article.
+## Interface Syntax
+This is what the usage will look like:
+```c
+// construction
+Square* square = Square__create(0, 1, 1, 2);
+// subclass overriden functions
+printf("shape name: %s\n", Shape__name(square));
+printf("shape sides: %d\n", Shape__sides(square));
+// derived class member interface
+printf("square x: %d\n", Square__x(square));
+printf("square y: %d\n", Square__y(square));
+printf("square width: %d\n", Square__width(square));
+printf("square height: %d\n", Square__height(square));
+// destruction
+Square__destroy(square);
+```
 
 ## Basic concepts:
-1. A class is defined by a struct type and functions that operate on that struct
+1. A class is defined by a struct type and functions that operate on that struct. This version is non-polymorphic (no virtual functions)
     ```c
     typedef struct Point Point;
     Point* Point_create(int x, int y);
@@ -14,7 +30,7 @@ The original article is structured well and a great launch point into OOP in cla
     int Point__x(Point* self); // point->x();
     int Point__y(Point* self); // point->y();
     ```
-2. A Base class defines a Type which defines the virtual fucntions to be overriden. It also tracks a buffer that will store the sub class's additional members.
+2. Moving on to polymorphic types: a Base class defines a Type which defines the virtual functions to be overriden. It also maintains a buffer that will store the sub class's additional members.
    ```c
    struct Shape {
 	ShapeType* type; //derived type representation object

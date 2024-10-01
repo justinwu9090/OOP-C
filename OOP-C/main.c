@@ -3,7 +3,9 @@
 
 void main()
 {
+	// construction
 	Square* square = Square__create(0, 1, 1, 2);
+	
 	// subclass overriden functions
 	printf("shape name: %s\n", Shape__name(square));
 	printf("shape sides: %d\n", Shape__sides(square));
@@ -13,6 +15,7 @@ void main()
 	printf("square width: %d\n", Square__width(square));
 	printf("square height: %d\n", Square__height(square));
 
+	// destruction
 	Square__destroy(square);
 
 }

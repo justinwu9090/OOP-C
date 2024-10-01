@@ -64,7 +64,6 @@ Square* Square__from_shape(Shape* shape) {
 }
 
 Square* Square__square_data(Square* self) {
-	//Shape* shape = (Shape*)self;
 	Shape* shape = Square__to_shape(self);
 	return (Square*)Shape__buffer(shape); // start of square's members
 }
